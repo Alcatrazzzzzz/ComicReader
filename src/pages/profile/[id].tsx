@@ -25,6 +25,7 @@ import NavBar from "../../components/NavBar";
 import NextLink from "next/link";
 import { ProfileMessage } from "../../components/ProfileMessage";
 import ProfileSubBlock from "../../components/ProfileSubBlock";
+import { SkrollTop } from "../../components/SkrollTop";
 
 interface ProfileProps {}
 
@@ -167,7 +168,11 @@ const Profile: React.FC<ProfileProps> = ({}) => {
               </NextLink>
             </Flex>
           </Flex>
-          <Flex w={["100%", "100%", "100%", "50%"]} flexDir="column" ml="20px">
+          <Flex
+            w={["100%", "100%", "100%", "50%"]}
+            flexDir="column"
+            ml={["0px", "0px", "0px", "20px"]}
+          >
             <Flex alignSelf="flex-start" mb="15px" alignItems="center">
               <Box w="5px" h="25px" mr="2px" bgColor="mRed"></Box>
               <Text color="mDBlue" fontSize="35px">
@@ -227,7 +232,12 @@ const Profile: React.FC<ProfileProps> = ({}) => {
               {posts}
             </Stack>
           </Flex>
-          <Flex w={["100%", "100%", "100%", "30%"]} flexDir="column" ml="20px">
+          <Flex
+            w={["100%", "100%", "100%", "30%"]}
+            pos="relative"
+            flexDir="column"
+            ml={["0px", "0px", "0px", "20px"]}
+          >
             <Flex alignSelf="flex-start" mb="15px" alignItems="center">
               <Box w="5px" h="25px" mr="2px" bgColor="mRed"></Box>
               <Text color="mDBlue" fontSize="35px">
@@ -251,6 +261,7 @@ const Profile: React.FC<ProfileProps> = ({}) => {
             >
               Show More
             </Text>
+            <SkrollTop />
           </Flex>
         </Flex>
       </Layout>

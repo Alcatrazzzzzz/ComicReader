@@ -1,7 +1,7 @@
 import { Avatar, Box, chakra, Flex, Icon, Text } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import NextLink from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsStarHalf } from "react-icons/bs";
 import { FaBell, FaLayerGroup, FaPenAlt, FaPlus } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
@@ -11,6 +11,7 @@ interface NavLeftAddonProps {
   activeFilter: string;
   isCreator?: boolean;
   setActiveFilter: any;
+  smallScreen?: boolean;
 }
 
 const filters: [string, IconType][] = [
@@ -20,22 +21,44 @@ const filters: [string, IconType][] = [
 
 const groups = ["Group 1", "Group 2"];
 
+const MotionFlex = motion(Flex);
+
 export const NavLeftAddon: React.FC<NavLeftAddonProps> = ({
   activeFilter = null,
   isCreator = false,
   setActiveFilter = null,
+  smallScreen = false,
 }) => {
+  const navBarHeight = 68;
+
+  const [leftAddonHeight, setLeftAddonHeight]: [
+    string | number,
+    any
+  ] = useState("100vh");
+
+  useEffect(() => {
+    if (window && smallScreen) {
+      setLeftAddonHeight(window.innerHeight - navBarHeight);
+      console.log(leftAddonHeight);
+    }
+  });
   return (
-    <Flex
-      display={["none", "none", "none", "flex"]}
+    <MotionFlex
+      overflowY={smallScreen ? "scroll" : "unset"}
+      key="leftAdd"
+      display={smallScreen ? "flex" : ["none", "none", "none", "flex"]}
       fontFamily="'Helvetica Bold', sans-serif"
       fontWeight="bold"
       flexDir="column"
       alignItems="center"
-      position="absolute"
-      width="18%"
-      height="100vh"
+      position={"absolute"}
+      zIndex={smallScreen ? 4 : 0}
+      width={smallScreen ? "100%" : "18%"}
+      height={smallScreen ? `${leftAddonHeight}px` : leftAddonHeight}
       bgColor="#F5F5F5"
+      initial={smallScreen ? { x: "-100%" } : { x: "0%" }}
+      animate={{ x: "0%", transition: { duration: 1 } }}
+      exit={{ x: "-100%" }}
     >
       <Flex
         justifyContent="center"
@@ -71,7 +94,10 @@ export const NavLeftAddon: React.FC<NavLeftAddonProps> = ({
           width="100%"
           m="20px 0"
         >
-          <Text fontSize="24px" color="rgb(25, 25, 25, 0.6)">
+          <Text
+            fontSize={smallScreen ? "18px" : "24px"}
+            color="rgb(25, 25, 25, 0.6)"
+          >
             Main
           </Text>
           <Box w="100%" h="2px" mb="8px" bgColor="rgb(25, 25, 25, 0.6)" />
@@ -85,7 +111,7 @@ export const NavLeftAddon: React.FC<NavLeftAddonProps> = ({
                 alignItems="center"
               >
                 <Icon
-                  h="24px"
+                  h="16px"
                   as={filter[1]}
                   mr="10px"
                   //anim
@@ -121,7 +147,7 @@ export const NavLeftAddon: React.FC<NavLeftAddonProps> = ({
                 alignItems="center"
               >
                 <Icon
-                  h="24px"
+                  h="16px"
                   as={FaLayerGroup}
                   mr="10px"
                   color={group === activeFilter ? "#101C5F" : null}
@@ -173,6 +199,6 @@ export const NavLeftAddon: React.FC<NavLeftAddonProps> = ({
           </Flex>
         )}
       </Flex>
-    </Flex>
+    </MotionFlex>
   );
 };

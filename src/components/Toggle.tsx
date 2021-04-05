@@ -5,7 +5,7 @@ import React, { useState } from "react";
 interface ToggleProps {
   name: string;
   label: string;
-  m?: string | number;
+  m?: string | number | string[];
 }
 
 export const Toggle: React.FC<ToggleProps> = (props) => {

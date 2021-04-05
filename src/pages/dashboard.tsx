@@ -53,7 +53,7 @@ const Dashboard: React.FC<dashboardProps> = ({}) => {
         isCreator
         setActiveFilter={(filter) => setActiveFilter(filter)}
       />
-      <Flex flexDir="column" alignItems="center">
+      <Flex layout="true" flexDir="column" alignItems="center">
         <Flex
           fontFamily="'Helvetica Bold', sans-serif"
           fontWeight="bold"
@@ -74,7 +74,7 @@ const Dashboard: React.FC<dashboardProps> = ({}) => {
               <Flex flexWrap="wrap" sx={{ gap: "20px" }}>
                 <AnimateSharedLayout>{realOtherFilters}</AnimateSharedLayout>
               </Flex>
-              <Flex ml="auto">
+              <Flex mt="auto" ml="auto">
                 <Button
                   onClick={() => setDescFilter(!descFilter)}
                   variant="unstyled"

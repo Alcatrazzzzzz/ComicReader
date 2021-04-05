@@ -7,6 +7,7 @@ interface LayoutProps {
   width?: string | number | string[];
   zIndex?: string | number;
   flex?: boolean;
+  flexDir?: "column" | "row" | string[];
 }
 
 export const Layout: React.FC<LayoutProps> = ({
@@ -16,9 +17,17 @@ export const Layout: React.FC<LayoutProps> = ({
   width = "80%",
   zIndex,
   flex,
+  flexDir = "row",
 }) => {
   return flex ? (
-    <Flex zIndex={zIndex} mb={mb} mt={mt} width={width} mx="auto">
+    <Flex
+      flexDir={flexDir as any}
+      zIndex={zIndex}
+      mb={mb}
+      mt={mt}
+      width={width}
+      mx="auto"
+    >
       {children}
     </Flex>
   ) : (

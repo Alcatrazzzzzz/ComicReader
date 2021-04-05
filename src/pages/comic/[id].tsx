@@ -31,10 +31,12 @@ const MotionFlex = motion(Flex);
 const Comic: React.FC<ComicProps> = ({}) => {
   const [moreInfoOpen, setMoreInfoOpen] = useState(false);
   const [moreOptionsOpen, setMoreOptionsOpen] = useState(false);
+
   let episodes = [];
   for (let i = 1; i < 20; i++) {
     episodes.push(<Episode key={i} />);
   }
+
   let recomendations = [];
   for (let i = 1; i < 5; i++) {
     recomendations.push(<Recomendation key={i} />);
@@ -47,7 +49,11 @@ const Comic: React.FC<ComicProps> = ({}) => {
       fontWeight="bold"
     >
       <NavBar />
-      <Flex alignItems="center" h="250px" position="relative">
+      <Flex
+        alignItems="center"
+        h={["150px", "150px", "150px", "250px"]}
+        position="relative"
+      >
         <Flex w="100%" h="100%" pointerEvents="none" position="absolute">
           <Flex
             zIndex={1}
@@ -65,8 +71,17 @@ const Comic: React.FC<ComicProps> = ({}) => {
             layout="fill"
           />
         </Flex>
-        <Flex w="70%" mx="auto" zIndex={1} flexDir="column">
-          <Text mt="-20px" fontSize="45px" color="white">
+        <Flex
+          w={["85%", "85%", "85%", "70%"]}
+          mx="auto"
+          zIndex={1}
+          flexDir="column"
+        >
+          <Text
+            mt="-20px"
+            fontSize={["24px", "35px", "45px", "45px"]}
+            color="white"
+          >
             The Beginning After The End
           </Text>
           <Wrap spacing="24px" mt="10px" color="white">
@@ -74,7 +89,7 @@ const Comic: React.FC<ComicProps> = ({}) => {
               return (
                 <Flex
                   key={genre.name}
-                  fontSize="16px"
+                  fontSize={["10px", "10px", "10px", "16px"]}
                   borderRadius="50px"
                   p="5px 10px"
                   backgroundColor={genre.color}
@@ -86,36 +101,63 @@ const Comic: React.FC<ComicProps> = ({}) => {
           </Wrap>
         </Flex>
       </Flex>
-      <Layout flex width="70%" mb="100px">
-        <Flex w="68%" mt="30px" direction="column">
+      <Layout
+        flexDir={["column-reverse", "column-reverse", "column-reverse", "row"]}
+        flex
+        width={["90%", "90%", "90%", "70%"]}
+        mb="100px"
+      >
+        <Flex w={["100%", "100%", "100%", "68%"]} mt="30px" direction="column">
           <Flex
             fontSize="20px"
-            w="fit-content"
+            w={["100%", "100%", "100%", "fit-content"]}
             justifyContent="center"
             color="white"
             bgColor="mDBlue"
             p="5px 35px 5px 15px"
-            borderRadius="0px 50px 0px 0px"
+            borderRadius={["0px", "0px", "0px", "0px 50px 0px 0px"]}
           >
             Episodes: {episodes.length}
           </Flex>
           <Stack spacing="20px" mt="20px">
             {episodes}
           </Stack>
+          <MotionFlex
+            display={["flex", "flex", "flex", "none"]}
+            layout
+            mt="20px"
+            w="100%"
+            flexDir="column"
+          >
+            <Flex
+              fontSize="20px"
+              w="100%"
+              justifyContent="center"
+              color="white"
+              bgColor="mDBlue"
+              p="5px 35px 5px 15px"
+              borderRadius={["0px", "0px", "0px", "50px 0px 0px 0px"]}
+            >
+              Recomended for you
+            </Flex>
+            <Stack spacing="20px" mt="20px">
+              {recomendations}
+            </Stack>
+          </MotionFlex>
         </Flex>
         <Flex
           flexDir="column"
           alignSelf="flex-start"
           alignItems="center"
           justifyContent="center"
-          w={"30%"}
+          w={["100%", "100%", "100%", "30%"]}
           ml="auto"
-          mt="-50px"
+          mt={["20px", "20px", "20px", "-50px"]}
           zIndex={2}
         >
           <MotionFlex
             layout
-            p="25px 35px"
+            p={["20px", "25px 35px"]}
             bgColor="#FFFFFF"
             borderRadius="12px"
             flexDir="column"
@@ -316,7 +358,13 @@ const Comic: React.FC<ComicProps> = ({}) => {
               </Flex>
             </AnimateSharedLayout>
           </MotionFlex>
-          <MotionFlex layout mt="20px" w="100%" flexDir="column">
+          <MotionFlex
+            display={["none", "none", "none", "flex"]}
+            layout
+            mt="20px"
+            w="100%"
+            flexDir="column"
+          >
             <Flex
               fontSize="20px"
               w="100%"

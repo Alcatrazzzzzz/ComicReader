@@ -13,10 +13,10 @@ export const Episode: React.FC<EpisodeProps> = ({}) => {
         height={80}
       />
       <Flex justifyContent="center" p="10px" flexDir="column">
-        <Text fontSize="15px" fontWeight="200" color="mGray">
+        <Text fontSize={"15px"} fontWeight="200" color="mGray">
           Episode 1
         </Text>
-        <Text fontSize="20px">The End of the Tunnel</Text>
+        <Text fontSize={["15px", "20px"]}>The End of the Tunnel</Text>
         <Flex fontSize="11px">
           <Text>Jul 17, 2018</Text>
           <Text ml="10px">1.2k views</Text>

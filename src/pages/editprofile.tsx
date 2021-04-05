@@ -176,6 +176,7 @@ const Editprofile: React.FC<EditprofileProps> = ({}) => {
                       icon={BsGeoAlt}
                     />
                     <InputField
+                      textarea
                       name="about"
                       placeholder="About"
                       label="ABOUT ME"
@@ -200,10 +201,15 @@ const Editprofile: React.FC<EditprofileProps> = ({}) => {
                       defaultValue={"reader"}
                       options={iconOptions}
                     />
-                    <Flex>
+                    <Flex direction={["column", "row", "row", "row"]}>
                       <Toggle name="showLib" label="SHOW LIBRARY" />
                       <Toggle
-                        m="0 0 0 40px"
+                        m={[
+                          "30px 0 0 0",
+                          "0 0 0 40px",
+                          "0 0 0 40px",
+                          "0 0 0 40px",
+                        ]}
                         name="showWorks"
                         label="SHOW YOUR WORKS"
                       />

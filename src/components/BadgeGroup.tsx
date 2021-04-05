@@ -4,8 +4,10 @@ import {
   FormLabel,
   HStack,
   Icon,
+  Stack,
   useRadio,
   useRadioGroup,
+  Wrap,
 } from "@chakra-ui/react";
 import { useField } from "formik";
 import React from "react";
@@ -110,7 +112,7 @@ export const BadgeGroup = ({
       >
         {heading}
       </FormLabel>
-      <HStack spacing="20px" mt="10px" mb="30px" {...group}>
+      <Wrap spacing="20px" mt="10px" mb="30px" {...group}>
         {name === "badge"
           ? options.map(({ text, color, bgColor }) => {
               const radio = getRadioProps({ value: text });
@@ -139,7 +141,7 @@ export const BadgeGroup = ({
                 </AvatarIcon>
               );
             })}
-      </HStack>
+      </Wrap>
     </>
   );
 };

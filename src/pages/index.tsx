@@ -4,9 +4,14 @@ import FromBotAnim from "../components/FromBotAnim";
 import { Layout } from "../components/Layout";
 import NavBar from "../components/NavBar";
 import { motion } from "framer-motion";
+import { SkrollTop } from "../components/SkrollTop";
 
 const Index = () => {
-  return <Flex justifyContent="center"></Flex>;
+  return (
+    <Box backgroundColor="background">
+      <NavBar />
+    </Box>
+  );
 };
 
 export default Index;
